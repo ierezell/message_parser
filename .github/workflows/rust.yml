@@ -19,7 +19,6 @@ jobs:
       - name: Install rust stable toolchain
         uses: dtolnay/rust-toolchain@stable
         with:
-          profile: minimal
           toolchain: nightly
           targets: wasm32-unknown-unknown
 

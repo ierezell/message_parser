@@ -150,7 +150,7 @@ pub fn WhatsappMultiFileSelectorComponent() -> impl IntoView {
             <For
                 each=files
                 key=|f| f.name().clone()
-                view=|f| { view! { <p>"Value: " {f.name()}</p> } } />
+                children=|f| { view! { <p>"Value: " {f.name()}</p> } } />
         </div>
 
         <Suspense fallback = move || view! {<p>"Loading..."</p>}>
