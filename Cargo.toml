@@ -11,11 +11,12 @@ target = "wasm32-unknown-unknown"
 
 [dependencies]
 regex = { version = "1.10.2", features = ["pattern"] }
-clap = { version = "4.4.6", features = ["derive"] }
+clap = { version = "4.4.7", features = ["derive"] }
 serde = { version = "1.0.189", features = ["derive"] }
 serde_json = "1.0.107"
 chrono = "0.4.31"
 leptos = { version = "0.5.1", features = ["csr", "nightly", "template_macro"] }
+leptos_router = { version = "0.5.1", features = ["csr", "nightly"] }
 plotly = { version = "0.8.4", features = ["plotly_image", "wasm"] }
 web-sys = { version = "0.3.64", features = [
     "File",
@@ -25,3 +26,17 @@ web-sys = { version = "0.3.64", features = [
 ] }
 wasm-bindgen-futures = "0.4.37"
 js-sys = "0.3.64"
+
+[profile.release]
+opt-level = 'z'
+lto = true
+codegen-units = 1
+
+[profile.wasm-release]
+inherits = "release"
+opt-level = 'z'
+lto = true
+codegen-units = 1
+
+[package.metadata.leptos]
+lib-profile-release = "wasm-release"
